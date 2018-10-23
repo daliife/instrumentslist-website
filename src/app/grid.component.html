@@ -1,0 +1,55 @@
+<div class="col l6">
+  <h1 class="flow-text center"><b>Selecciona un instrument per a veure més informació</b></h1>
+  <div *ngFor="let instrument of instruments; let i = index" class="col l4 m4 s12">
+    <div class="card {{ instrument.primary_color }}">
+      <div class="card-image">
+        <img class="responsive-img" src="{{ imgPath }}{{ instrument.photo_path}}">
+        <button class="btn-floating pulse halfway-fab waves-effect waves-light {{ instrument.secondary_color }}" (click)="updateDescription(i)"><i class="material-icons">add</i></button>
+      </div>
+      <div class="card-content">
+        <h5 class="capitalize truncate">{{ instrument.name }}</h5>
+        <p class="{{ instrument.text_color}} left-align"><b>{{ instrument.family }}</b></p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="col l6">
+  <h1 class="flow-text center"><b>Descripció de l'instrument</b></h1>
+  <div class="card col l12 {{ instrument.primary_color }}">
+    <!--<div id="wrap" class="col l4">
+      <img class="descriptionImage" src="{{ imgPath }}{{ instrument.photo_path}}">
+    </div>-->
+      <div class="col l12">
+        <ul class="collection with-header">
+          <li class="collection-header {{ instrument.primary_color  }}"><h3 class="capitalize">{{ instrument.article }}{{ instrument.name }}<h5 class="{{ instrument.primary_color }} {{instrument.text_color}} right">Família - {{ instrument.family }}</h5></h3></li>
+          <li class="collection-item {{ instrument.secondary_color }} center"><b>DESCRIPCIÓ</b></li>
+          <li class="collection-item {{ instrument.primary_color }} flow-text enlarge flow-text enlarge">{{ instrument.description }}</li>
+          <li class="collection-item {{ instrument.secondary_color }} center"><b>ENLLAÇOS</b></li>
+          <li class="collection-item {{ instrument.primary_color }} flow-text enlarge">
+            <div>Escolta {{ instrument.article }}{{ instrument.name }}<a href="{{ instrument.links[0] }}" class="secondary-content tooltipped" data-position="left" data-tooltip="Escolta l'arxiu" target="_blank"><i class="material-icons {{ instrument.text_color }}">play_circle_outline</i></a></div>
+          </li>
+          <li class="collection-item {{ instrument.primary_color }} flow-text enlarge">
+            <div *ngIf="article_id == 0">Imatges del {{ instrument.name }}<a href="{{ instrument.links[1] }}" class="secondary-content tooltipped" data-position="left" data-tooltip="Obre el pdf" target="_blank"><i class="material-icons {{ instrument.text_color }}">landscape</i></a></div>
+            <div *ngIf="article_id == 1">Imatges de la {{ instrument.name }}<a href="{{ instrument.links[1] }}" class="secondary-content tooltipped" data-position="left" data-tooltip="Obre el pdf" target="_blank"><i class="material-icons {{ instrument.text_color }}">landscape</i></a></div>
+            <div *ngIf="article_id == 2">Imatges de l'{{ instrument.name }}<a href="{{ instrument.links[1] }}" class="secondary-content tooltipped" data-position="left" data-tooltip="Obre el pdf" target="_blank"><i class="material-icons {{ instrument.text_color }}">landscape</i></a></div>
+          </li>
+          <li class="collection-item {{ instrument.primary_color }} flow-text enlarge">
+            <div *ngIf="article_id == 0">Més informació del {{ instrument.name }}<a href="{{ instrument.links[2] }}" class="secondary-content tooltipped" data-position="left" data-tooltip="Obre el web" target="_blank"><i class="material-icons {{ instrument.text_color }}">web</i></a></div>
+            <div *ngIf="article_id == 1">Més informació de la {{ instrument.name }}<a href="{{ instrument.links[2] }}" class="secondary-content tooltipped" data-position="left" data-tooltip="Obre el web" target="_blank"><i class="material-icons {{ instrument.text_color }}">web</i></a></div>
+            <div *ngIf="article_id == 2">Més informació de l'{{ instrument.name }}<a href="{{ instrument.links[2] }}" class="secondary-content tooltipped" data-position="left" data-tooltip="Obre el web" target="_blank"><i class="material-icons {{ instrument.text_color }}">web</i></a></div>
+          </li>
+          <li class="collection-item {{ instrument.secondary_color }} center"><b>VIDEOS</b></li>
+          <li class="collection-item {{ instrument.primary_color }} flow-text enlarge">
+            <div>Video 1<a href="{{ instrument.videos[0] }}" class="secondary-content tooltipped" data-position="left" data-tooltip="Obre a youtube" target="_blank"><i class="material-icons {{ instrument.text_color }}">music_video</i></a></div>
+          </li>
+          <li class="collection-item {{ instrument.primary_color }} flow-text enlarge">
+            <div>Video 2<a href="{{ instrument.videos[1] }}" class="secondary-content tooltipped" data-position="left" data-tooltip="Obre a youtube" target="_blank"><i class="material-icons {{ instrument.text_color }}">music_video</i></a></div>
+          </li>
+          <li class="collection-item {{ instrument.primary_color }} flow-text enlarge">
+            <div>Video 3<a href="{{ instrument.videos[2] }}" class="secondary-content tooltipped" data-position="left" data-tooltip="Obre a youtube" target="_blank"><i class="material-icons {{ instrument.text_color }}">music_video</i></a></div>
+          </li>
+        </ul>
+    </div>
+  </div>
+</div>
